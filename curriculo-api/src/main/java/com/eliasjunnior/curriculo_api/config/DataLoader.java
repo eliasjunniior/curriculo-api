@@ -114,31 +114,67 @@ public class DataLoader implements CommandLineRunner {
         curriculo.setFormacoes(Arrays.asList(graduacao, sistemas, tecnico));
 
         // IDIOMAS
-        Idioma pt = new Idioma("Português", "Nativo");
-        Idioma es = new Idioma("Espanhol", "Leitura e compreensão");
+        // Correção: Usar construtor vazio e setters
+        Idioma pt = new Idioma();
+        pt.setNome("Português");
+        pt.setNivel("Nativo");
 
-        pt.setCurriculo(curriculo);
-        es.setCurriculo(curriculo);
+        Idioma es = new Idioma();
+        es.setNome("Espanhol");
+        es.setNivel("Leitura e compreensão");
 
-        curriculo.setIdiomas(Arrays.asList(pt, es));
+        pt.setCurriculo(curriculo); // Continua igual
+        es.setCurriculo(curriculo); // Continua igual
+
+        curriculo.setIdiomas(Arrays.asList(pt, es)); // Continua igual
 
         // HABILIDADES
-        Habilidade h1 = new Habilidade("Marketing Digital", "Avançado");
-        Habilidade h2 = new Habilidade("RD Station", "Avançado");
-        Habilidade h3 = new Habilidade("Kommo CRM", "Avançado");
-        Habilidade h4 = new Habilidade("TOTVS RM/Protheus", "Intermediário");
-        Habilidade h5 = new Habilidade("ERP Bling / Tiny", "Avançado");
-        Habilidade h6 = new Habilidade("Figma / Canva", "Intermediário");
-        Habilidade h7 = new Habilidade("Organização de eventos", "Avançado");
-        Habilidade h8 = new Habilidade("Inovação e criatividade", "Avançado");
-        Habilidade h9 = new Habilidade("Python / IA (iniciante)", "Básico");
+        // Correção: Usar construtor vazio e setters para cada habilidade
+        Habilidade h1 = new Habilidade();
+        h1.setNome("Marketing Digital");
+        h1.setNivel("Avançado");
 
+        Habilidade h2 = new Habilidade();
+        h2.setNome("RD Station");
+        h2.setNivel("Avançado");
+
+        Habilidade h3 = new Habilidade();
+        h3.setNome("Kommo CRM");
+        h3.setNivel("Avançado");
+
+        Habilidade h4 = new Habilidade();
+        h4.setNome("TOTVS RM/Protheus");
+        h4.setNivel("Intermediário");
+
+        Habilidade h5 = new Habilidade();
+        h5.setNome("ERP Bling / Tiny");
+        h5.setNivel("Avançado");
+
+        Habilidade h6 = new Habilidade();
+        h6.setNome("Figma / Canva");
+        h6.setNivel("Intermediário");
+
+        Habilidade h7 = new Habilidade();
+        h7.setNome("Organização de eventos");
+        h7.setNivel("Avançado");
+
+        Habilidade h8 = new Habilidade();
+        h8.setNome("Inovação e criatividade");
+        h8.setNivel("Avançado");
+
+        Habilidade h9 = new Habilidade();
+        h9.setNome("Python / IA (iniciante)");
+        h9.setNivel("Básico");
+
+
+        // O loop para setar o currículo continua igual
         for (Habilidade h : Arrays.asList(h1, h2, h3, h4, h5, h6, h7, h8, h9)) {
-            h.setCurriculo(curriculo);
-        }
+         h.setCurriculo(curriculo);
+}
 
+        // Adicionar à lista do currículo continua igual
         curriculo.setHabilidades(Arrays.asList(h1, h2, h3, h4, h5, h6, h7, h8, h9));
-
+        
         curriculoRepository.save(curriculo);
     }
 }
