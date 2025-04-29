@@ -1,7 +1,11 @@
-FROM openjdk:17-jdk-slim
+# Usa uma imagem base oficial do OpenJDK 21 (compatível com pom.xml)
+FROM openjdk:21-jdk-slim
 
+# Define o diretório de trabalho dentro do container
 WORKDIR /app
 
+# Copia o wrapper do Maven e o pom.xml para o container
+# Copia separadamente para aproveitar o cache do Docker se as dependências não mudarem
 COPY mvnw .
 COPY .mvn/ .mvn/
 COPY pom.xml .
@@ -21,4 +25,5 @@ RUN ./mvnw package -DskipTests
 EXPOSE 8080
 
 # Comando para executar a aplicação quando o container iniciar
+# Confere se o nome do JAR está correto conforme seu pom.xml (artifactId-version.jar)
 ENTRYPOINT ["java", "-jar", "/app/target/curriculo-api-0.0.1-SNAPSHOT.jar"]
