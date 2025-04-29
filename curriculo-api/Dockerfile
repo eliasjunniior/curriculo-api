@@ -1,4 +1,4 @@
-# Usa uma imagem base oficial do OpenJDK 21 (compatível com pom.xml)
+
 FROM openjdk:21-jdk-slim
 
 # Define o diretório de trabalho dentro do container
