@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  postgres_db:
+    image: postgres:15 # Imagem oficial do PostgreSQL versão 15
+    container_name: curriculo-postgres-dev # Nome do container
+    environment:
+      # --- Credenciais com seu nome ---
+      POSTGRES_USER: eliasj_dev_user
+      POSTGRES_PASSWORD: EliasDevP@ss1!
+      POSTGRES_DB: curriculos_db # Nome do banco de dados que será criado
+      # ---
+    ports:
+      - "5432:5432" # Mapeia a porta 5432 do container para a 5432 do Codespace
+    volumes:
+      - postgres_dev_data:/var/lib/postgresql/data # Pasta para persistir os dados do banco
+
+volumes:
+  postgres_dev_data: # Define o volume nomeado para persistência
